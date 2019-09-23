@@ -77,6 +77,3 @@ class Person
      
 
 end
-p1 = Person.new('Blake')
-p1.happiness = 11
-puts p1.happiness
