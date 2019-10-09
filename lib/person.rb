@@ -2,11 +2,11 @@
 require 'pry'
 class Person
 
-    attr_accessor :bank_account, :happiness, :hygiene
     attr_reader :name
+    attr_accessor :bank_account, :happiness, :hygiene
     def initialize(name)
         @name = name
-        @bank_account = 25.00
+        @bank_account = 25
         @happiness = 8
         @hygiene = 8
         def happiness
@@ -18,17 +18,18 @@ class Person
             @hygiene < 0? @hygiene = 0 : @hygiene
         end
     end
+
     def happy?
-        if @happiness > 7 
-            return true
+        if @happiness > 7
+            true
         else
             false
         end
-    end 
+    end
 
     def clean?
         if @hygiene > 7
-            return true
+            true
         else
             false
         end
@@ -37,8 +38,7 @@ class Person
     def get_paid(salary)
         @bank_account += salary
         return "all about the benjamins"
-        #binding.pry
-    end 
+    end
 
     def take_bath
         self.hygiene = @hygiene + 4
@@ -54,23 +54,22 @@ class Person
     def call_friend(friend)
         self.happiness = @happiness + 3
         friend.happiness = friend.happiness + 3
-        return "Hi #{friend.name}! It's #{self.name}. How are you?"
+        "Hi #{friend.name}! It's #{self.name}. How are you?"
     end
 
-    def start_conversation(friendo, topic)
-        if topic == "politics"
+    def start_conversation(amigo, material)
+        if material == "politics"
             self.happiness = @happiness - 2
-            friendo.happiness = friendo.happiness- 2
-            return "blah blah partisan blah lobbyist"
+            amigo.happiness = amigo.happiness - 2
+            return "blah blah partisan blah lobbyist" 
         end
-
-        if topic == "weather"
+        if material == "weather"
             self.happiness = @happiness + 1
-            friendo.happiness = friendo.happiness + 1
+            amigo.happiness = amigo.happiness + 1
             return "blah blah sun blah rain"
         else
             return "blah blah blah blah blah"
         end
     end
-    
+
 end
